@@ -13,7 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
         { keys: "Ctrl + S", description: "Save file" },
         { keys: "Ctrl + P", description: "Print document" },
         { keys: "Ctrl + A", description: "Select all" },
-        { keys: "Ctrl + F", description: "Find in page" }
+        { keys: "Ctrl + F", description: "Find in page" },
+        { keys: "Ctrl + N", description: "Open new window" },
+        { keys: "Ctrl + T", description: "Open new tab" },
+        { keys: "Ctrl + W", description: "Close tab" },
+        { keys: "Ctrl + Shift + T", description: "Reopen closed tab" }
     ];
 
     // Search function
@@ -29,11 +33,12 @@ document.addEventListener("DOMContentLoaded", function () {
             if (filteredShortcuts.length > 0) {
                 filteredShortcuts.forEach(s => {
                     const item = document.createElement("p");
+                    item.className = "result-item";
                     item.innerHTML = `<strong>${s.keys}</strong>: ${s.description}`;
                     resultsDiv.appendChild(item);
                 });
             } else {
-                resultsDiv.innerHTML = "<p>No shortcuts found</p>";
+                resultsDiv.innerHTML = "<p class='no-result'>No shortcuts found</p>";
             }
         }
     });
